@@ -1,0 +1,18 @@
+services: 
+  front-end:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '5252:5252'
+    volumes:
+      - .:/app
+    entrypoint: ["python3", "api.py"]
+  
+  back-end:
+    image: nginx:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
